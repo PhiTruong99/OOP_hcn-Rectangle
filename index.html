@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lớp đối tượng hcn Rectangle</title>
+        <meta charset="utf-8">
+        <canvas id='mycanvas' max-width=200 max-heigth=200 style="border: 1px solid red;"></canvas>
+    </head>
+    <body>
+        <script>
+            //Viết một lớp các đối tượng hình chữ nhật lấy tên là Rectangle,
+            //mỗi hình chữ nhật đều có những đặc tính sau: 
+            //+ Có thông số chiều dài (int). + Có thông số chiều rộng (int). 
+            //+ Có tính năng tính diện tích. + Có tính năng tính chu vi. 
+            //+ Có tính năng hiển thị trực quan hình chữ nhật bằng cách vẽ lên canvas 
+            //Sử dụng lớp Rectangle vừa định nghĩa để viết một chương trình JavaScript với kịch bản như sau:
+            //Khai báo và khởi tạo một đối tượng kiểu Rectangle.
+            //Hiển thị hình chữ nhật trên màn hình web Thay đổi chiều dài và chiều rộng của hình chữ nhật.
+            //In ra màn hình diện tích và chu vi của hình chữ nhật đó.
+            let Rectangle = function(width, heigth){
+                this.width = width;
+                this.heigth = heigth;
+                this.canvas = function(){
+                    let c = document.getElementById('mycanvas');
+                    let ctx = c.getContext('2d');
+                    ctx.fillStyle = "#0b84ee";
+                    ctx.fillRect(10, 10, width, heigth);
+                }
+                this.getArea = function(){
+                    return width*heigth;
+                }
+                this.getPerimeter = function(){
+                    return (width+heigth)*2;
+                }
+            }
+            let cd = parseInt(prompt("Nhập chiều dài hcn: "));
+            let cr = parseInt(prompt("Nhập chiều rộng hcn: "));
+            let rectangle = new Rectangle(cr,cd);
+            rectangle.canvas();
+            let area = rectangle.getArea();
+            let perimeter = rectangle.getPerimeter();
+            document.write("Chu vi hcn là: "+perimeter);
+            document.write("</br>Diện tích hcn là: "+area);
+        </script>
+    </body>
+</html>
